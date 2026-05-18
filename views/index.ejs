@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <p>hello</p>
+    <!-- This is an ejs tag. the one with the '=' sends the code inside to the rendered page -->
+    <!-- 'text' is a value passed in the second parameter of res.render -->
+    <!-- if the value is not passed, you will get an undefined error, so you want to use 'locals.' before the information you pass so you don't get an undefined error because 'locals' is always defined. -->
+    <!-- 'Default' is there in case there's not a value passed so we have a default value. -->
+    <p>Hello <%= locals.text || 'Default' %></p>
 </body>
 </html>

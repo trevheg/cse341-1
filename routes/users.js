@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router(); 
 
 // because we are working on one set of routes, we use router instead of app by convention
+// get, post, put, and delete are examples of route handlers
 // all of the routes for /users is attached to the router object so we can later export it 
 // the url for this section is /users, so we can refer to /users as /
 router.get('/', (req, res) => {
@@ -12,7 +13,7 @@ router.get('/', (req, res) => {
 
 // post requests are when a web page is submitting information. In this case, it will be when the browser is submitting information about a new user. 
 router.post('/', (req, res) => {
-    res.send('Create User'); // this is just a placeholder. 
+    res.send('Create User'); // this line is just a placeholder. 
 });
 
 router.get('/new', (req, res) => {
@@ -24,6 +25,8 @@ router.get('/new', (req, res) => {
 // because code goes from top to bottom, because :id is a "wild card," you want to put this at the end, or after any get requests that have something following /. For example, if you put /new after this, then server requests looking for /users/new will look for a user with the id of 'new'.
 router.get('/:id', (req, res) => {
     // req is the request object which contains information on what the browser is requesting. So in this case it is sending 'id' as part of the request
+    // this line makes more sense if you look at router.param below
+    console.log(req.user);
     // res is the reponse object. In this case we are sending a parameter as a response. 
     res.send(`Get user with ID of ${req.params.id}`);
 });
@@ -36,7 +39,28 @@ router.put('/:id', (req, res) => {
 // delete requests are about deleting information 
 router.delete('/:id', (req, res) => {
     res.send(`Delete user with ID of ${req.params.id}`);
-})
+});
+
+// you can also chain all the routes together into one route if they go to the same url. It does the same thing but cleans up the code a bit 
+// router
+//     .route('/:id')
+//     .get('/:id', (req, res) => {
+//         res.send(`Get user with ID of ${req.params.id}`);
+//     }).put('/:id', (req, res) => {
+//         res.send(`Update user with ID of ${req.params.id}`);
+//     }).delete('/:id', (req, res) => {
+//         res.send(`Delete user with ID of ${req.params.id}`);
+//     });
+
+
+const users = [{name: 'Kyle' }, { name: 'Sally' }];
+// this says that when you go to a route that has an id parameter, then run this code
+// param is a kind of middleware, which is code that runs between the request and the response 
+router.param('id', (req, res, next, id) => {
+    req.user = users[id];
+    // this middleware will run indefinitely and you will be in an infinite loop unless you run the function next 
+    next();
+});
 
 // export the router object 
 // in node you do this by assigning the router to module.exports, which is the exports object for this module. 

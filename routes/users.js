@@ -54,7 +54,7 @@ router.delete('/:id', (req, res) => {
 
 
 const users = [{name: 'Kyle' }, { name: 'Sally' }];
-// this says that when you go to a route that has an id parameter, then run this code
+// this router method says that when you go to a route that has an id parameter, then run this code
 // param is a kind of middleware, which is code that runs between the request and the response 
 router.param('id', (req, res, next, id) => {
     req.user = users[id];

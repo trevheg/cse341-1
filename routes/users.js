@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-    res.send("User New Form");
+    res.render('users/new');
 });
 
 // get is for retrieving information from a database 

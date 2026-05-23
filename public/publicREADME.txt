@@ -1,0 +1,2 @@
+- The public folder holds static files (that don't change), like CSS, JavaScript, images, and static HTML files. 
+- Without the static files in /public, any request for a route to a static file would cause the server to look for an app.get('/static-file-here');

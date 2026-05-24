@@ -8,6 +8,12 @@ const app = express();
 // this way if a client requests the url of a static page, the server will give those files directly instead of looking for a route like app.get('/static.html')
 app.use(express.static("public"));
 
+// this will allow us to access information coming from forms 
+// extended: true as opposed to extended: false allows the form parser to handle more complex data types like nested objects and arrays. Form data is normally sent in an array of objects, so this is necessary. 
+  // Web Dev Simplified calls this "boilerplate code", which according to wikipedia is sections of code that are repeated in multiple places with little to no variation. You just need it to make it work. 
+  // it's only really used in legacy code or in cases where you want to save a tiny bit of memory. 
+app.use(express.urlencoded({ extended: true }))
+
 // this sets EJS (embedded JavaScript) as your viewing engine.
 // that's the one that lets you make .ejs files which are HTML files with embedded JS
 // You want to make sure you have "EJS Language Support installed in VSCode"

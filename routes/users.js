@@ -13,11 +13,14 @@ router.get('/', (req, res) => {
 
 // post requests are when a web page is submitting information. In this case, it will be when the browser is submitting information about a new user. 
 router.post('/', (req, res) => {
-    res.send('Create User'); // this line is just a placeholder. 
+    // req.body.firstName is provided by the form on users/new 
+    // by default Express doesn't let you access the body, so you need to use middleware to do do that. 
+    console.log(req.body.firstName );
+    res.send('hi')
 });
 
 router.get('/new', (req, res) => {
-    res.render('users/new');
+    res.render('users/new', { firstName: 'Test' });
 });
 
 // get is for retrieving information from a database 

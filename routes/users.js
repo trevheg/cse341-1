@@ -13,10 +13,19 @@ router.get('/', (req, res) => {
 
 // post requests are when a web page is submitting information. In this case, it will be when the browser is submitting information about a new user. 
 router.post('/', (req, res) => {
-    // req.body.firstName is provided by the form on users/new 
-    // by default Express doesn't let you access the body, so you need to use middleware to do do that. 
-    console.log(req.body.firstName );
-    res.send('hi')
+    const isValid = true;
+    if (isValid) {
+        // adds the new user to the users list
+        // req.body.firstName is provided by the form on users/new 
+        // by default Express doesn't let you access the body, so you need to use middleware to do do that. This is done by the line 'app.use(express.urlencoded({ extended: true }))' in server.js
+        users.push({ firstName: req.body.firstName })
+        // redirects to the page for the user we just created. users.length - 1 gets the last user id. 
+        return res.redirect(`/users/${users.length - 1}`)
+    } else {
+        console.log("Error");
+        return res.render('users/new', { firstName: req.body.firstName})
+    }
+
 });
 
 router.get('/new', (req, res) => {

@@ -11,7 +11,7 @@ app.use(express.static("public"));
 // this will allow us to access information coming from forms 
 // extended: true as opposed to extended: false allows the form parser to handle more complex data types like nested objects and arrays. Form data is normally sent in an array of objects, so this is necessary. 
   // Web Dev Simplified calls this "boilerplate code", which according to wikipedia is sections of code that are repeated in multiple places with little to no variation. You just need it to make it work. 
-  // it's only really used in legacy code or in cases where you want to save a tiny bit of memory. 
+  // extended: false is only really used in legacy code or in cases where you want to save a tiny bit of memory. You will probably never use it. 
 app.use(express.urlencoded({ extended: true }))
 
 // this sets EJS (embedded JavaScript) as your viewing engine.

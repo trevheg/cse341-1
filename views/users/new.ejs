@@ -8,8 +8,9 @@
 <body>
     <form action="/users" method="POST">
         <label>
-            <!-- including the ejs tag for locals.firstName puts in a default value on the rendered page -->
-            <input type="text" name="firstName" value="<%= locals.firstName %>">
+            <!-- including an ejs tag with locals.firstName puts in a default value on the rendered page. You can use locals.firstName, but the 'locals' is unnecessary. It was passed as 'firstName: 'Test'' -->
+             <!-- this will save the input as req.body.firstName. the 'name' attribute determines the key in req.body  -->
+            <input type="text" name="firstName" value="<%= firstName %>">
         </label>
         <button type="submit">Submit</button>
     </form>

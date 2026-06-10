@@ -2,6 +2,10 @@ This is a repo I made to follow along the Node and Express Tutorial in the week 
 
 I'm going to follow along with Web Dev Simplified Learn Express JS in 35 minutes video https://www.youtube.com/watch?v=SccSCuHhOw0
 
+other videos:
+MongoDB crash course: https://www.youtube.com/watch?v=ofme2o29ngU
+build a REST API https://www.youtube.com/watch?v=fgTGADljAeg 
+
 Project Setup:
 Console: npm init -y 
 - this will set up a basic package.json

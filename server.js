@@ -1,14 +1,16 @@
-// imports the express library
+// import the express library
 const express = require('express');
-// Create an Express application. "app" now holds the web server. app is the object for routes, middleware, etc. 
+// Create an Express application. The "app" object now holds the web server. app is the object for routes, middleware, etc. 
 // app is the central hub of the entire application 
 const app = express();
 
-// if you have static pages, that is pages that don't need to be rendered, you can keep them in the "public" folder. 
+// if you have static pages, ie pages that don't need to be rendered server side, you can keep them in the "public" folder. 
 // this way if a client requests the url of a static page, the server will give those files directly instead of looking for a route like app.get('/static.html')
+// this bit of code makes Express look check the public folder for the file before using routes 
 app.use(express.static("public"));
 
 // this parses data from html forms and puts it in req.body so we can use that data  
+  // req.body is an object that contains data sent in the body of a request. 
 // extended: true as opposed to extended: false allows the form parser to handle more complex data types like nested objects and arrays. Form data is normally sent in an array of objects, so this is necessary. 
   // Web Dev Simplified calls this "boilerplate code", which according to wikipedia is sections of code that are repeated in multiple places with little to no variation. You just need it to make it work. 
   // extended: false is only really used in legacy code or in cases where you want to save a tiny bit of memory. You will probably never use it. 

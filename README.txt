@@ -9,12 +9,18 @@ build a REST API https://www.youtube.com/watch?v=fgTGADljAeg
 Project Setup:
 Console: npm init -y 
 - this will set up a basic package.json
+- package.json has a project's metadata, dependencies, and scripts. 
+    - metadata: name, version, description, author, license 
+    - dependencies: all the external packages the project needs to run 
+        - devDependencies: packages needed during development 
+    - scripts: custom commands like start (for running app), test (for testing), devStart (starting in development mode)
 
 console: npm i express 
 - this will install the express library and create the node_modules directory
+- express is a framework for Node.js that simplifies handling http requests, routing and serving responses 
 
 console: npm i --save-dev nodemon
-- sets server to restart when you make a change
+- adds option to server to start it using nodemon instead of node which will restart the server whenever you make a change. 
 
 in package.json, add to "scripts": "devStart": "nodemon server.js"
 - starts server using nodemon instead of node so your server restarts every time you save a change
@@ -22,7 +28,7 @@ in package.json, add to "scripts": "devStart": "nodemon server.js"
 - "test" and "start" don't need "run" eg "npm start". Writing "run" won't cause an error, but it's redundant. 
 
 create "server.js" file
-- add code to import express library, create an Express applicaiton, and start the server (app.listen(3000))
+- add code to import express library, create an Express applicaiton, and start the server (app.listen(3000)) (see server.js file to see what all this means)
 
 console: npm i ejs
 - installs ejs (embedded JavaScript)

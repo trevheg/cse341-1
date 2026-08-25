@@ -1,9 +1,10 @@
 const express = require('express');
 // create a mini router - an object that handles routes for one section of the app (in this case, user-related routes)
 // this is not a full application, it is a modular piece that plugs into the main app
+// because we are working on one set of routes, we use router as the object name instead of app by convention
 const router = express.Router(); 
 
-// because we are working on one set of routes, we use router instead of app by convention
+
 // get, post, put, and delete are examples of route handlers
 // all of the routes for /users is attached to the router object so we can later export it 
 // the url for this section is /users, so we can refer to /users as /
